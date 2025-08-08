@@ -4,7 +4,7 @@ A genetic programming system for discovering and enhancing quantitative trading 
 
 ## Research Paper
 
-This implementation is based on the research paper. Gracious thanks to Ren, Qin, and LI:
+This implementation is based on the research paper. Gracious thanks to Ren, Qin, and Li:
 
 **["Alpha Mining and Enhancing via Warm Start Genetic Programming for Quantitative Investment"](https://arxiv.org/abs/2412.00896)**  
 
