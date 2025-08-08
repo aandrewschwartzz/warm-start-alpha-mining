@@ -1,0 +1,22 @@
+Alpha Expression: std(above_mean(+(returns,returns)))
+Evaluation Timestamp: 2025-02-27 17:18:48
+
+Tree Structure:
+└── Op: std
+    └── └── Subset: above_mean
+    └──     └── └── Op: +
+    └──     └──     ├── └── Data: returns
+    └──     └──     └── └── Data: returns
+
+
+    
+    
+Alpha Expression: std(top_n(*(volume,returns)))
+Evaluation Timestamp: 2025-02-28 11:24:31
+
+Tree Structure:
+└── Op: std
+    └── └── Subset: top_n
+    └──     └── └── Op: *
+    └──     └──     ├── └── Data: volume
+    └──     └──     └── └── Data: returns

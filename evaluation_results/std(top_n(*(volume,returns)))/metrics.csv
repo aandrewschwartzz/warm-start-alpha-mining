@@ -1,0 +1,23 @@
+Alpha Expression,,,std(top_n(*(volume,returns)))
+Tree Structure,,,
+,,,└── Op: std
+,,,    └── └── Subset: top_n
+,,,    └──     └── └── Op: *
+,,,    └──     └──     ├── └── Data: volume
+,,,    └──     └──     └── └── Data: returns
+
+Alpha Metrics
+Metric,Training,Validation
+mean_ic,0.09660065220544513,0.08280618518985557
+information_ratio,0.2490670997338398,0.22459941493789815
+ic_std,0.3878499099587032,0.368683886432881
+percent_positive_ic,59.64125560538116,58.56164383561644
+
+Strategy Metrics
+Metric,Training,Validation
+mean_return,2.6086287512194186,3.5223638628635023
+volatility,0.3822559141569139,0.46378662649246066
+sharpe_ratio,6.824299257665877,7.594793945445432
+max_drawdown,-0.16500938813935473,-0.20748067603640774
+hit_ratio,68.22222222222221,71.0
+turnover,242.9774229802595,241.23518685319425

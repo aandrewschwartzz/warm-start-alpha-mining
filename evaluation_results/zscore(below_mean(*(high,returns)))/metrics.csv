@@ -1,0 +1,23 @@
+Alpha Expression,,,zscore(below_mean(*(high,returns)))
+Tree Structure,,,
+,,,└── Op: zscore
+,,,    └── └── Subset: below_mean
+,,,    └──     └── └── Op: *
+,,,    └──     └──     ├── └── Data: high
+,,,    └──     └──     └── └── Data: returns
+
+Alpha Metrics
+Metric,Training,Validation
+mean_ic,0.057800493576092016,0.07040714898296568
+information_ratio,0.17622603775649415,0.20678831265891007
+ic_std,0.3279906551378047,0.3404793437194865
+percent_positive_ic,55.82959641255605,59.93150684931506
+
+Strategy Metrics
+Metric,Training,Validation
+mean_return,2.0837278188939017,2.066883211000923
+volatility,0.33092853903660474,0.28960673274222193
+sharpe_ratio,6.296609609313315,7.136861741541933
+max_drawdown,-0.19638908960314416,-0.10460596559319468
+hit_ratio,64.66666666666666,71.66666666666667
+turnover,309.8166413177465,326.7791798402053

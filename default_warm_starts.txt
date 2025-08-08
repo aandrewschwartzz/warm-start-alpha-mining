@@ -1,0 +1,85 @@
+def create_alpha1_example():
+    """
+    Example creating Alpha1 from the paper:
+    "Rank the daily intraday returns of the past 20 days by the same day's turnover rate, 
+    and average the top 5."
+    
+    The key difference in this implementation is that we:
+    1. First rank the intraday returns BY the turnover rate
+    2. Then select the top 5 values
+    3. Finally compute the moving average on only those top 5 values
+    """
+    # Create the tree structure
+    alpha1 = AlphaTree(
+        AlphaNode(
+            NodeType.OPERATOR,
+            Operator.MA,
+            [
+                # First select top 5 ranked values
+                AlphaNode(
+                    NodeType.SUBSET,
+                    SubsetType.TOP_N,
+                    [
+                        # Rank intraday returns BY turnover rate
+                        AlphaNode(
+                            NodeType.OPERATOR,
+                            Operator.ASC_RANK,
+                            [
+                                AlphaNode(NodeType.DATA, DataField.INTRADAY_RETURNS),  # Values to rank
+                                AlphaNode(NodeType.DATA, DataField.TURNOVER_RATE)      # Rank by this
+                            ]
+                        )
+                    ],
+                    subset_params={'n': 5}  # Take top 5 values
+                )
+            ]
+        )
+    )
+    return alpha1
+
+
+def create_alpha2_example():
+    """
+    Example creating Alpha2 from the paper:
+    "Rank the daily intraday turnover rates of the past 20 days by the next day's 
+    overnight turnover rate, and average the top 5."
+    """
+    alpha2 = AlphaTree(
+        AlphaNode(
+            NodeType.OPERATOR,
+            Operator.MA,
+            [
+                # First select top 5 ranked values
+                AlphaNode(
+                    NodeType.SUBSET,
+                    SubsetType.TOP_N,
+                    [
+                        # Rank turnover rates BY next day's overnight turnover
+                        AlphaNode(
+                            NodeType.OPERATOR,
+                            Operator.ASC_RANK,
+                            [
+                                AlphaNode(NodeType.DATA, DataField.TURNOVER_RATE),     # Values to rank
+                                AlphaNode(                                             # Rank by next day's turnover
+                                    NodeType.OPERATOR,
+                                    Operator.DELAY,
+                                    [AlphaNode(NodeType.DATA, DataField.TURNOVER_RATE)]
+                                )
+                            ]
+                        )
+                    ],
+                    subset_params={'n': 5}  # Take top 5 values
+                )
+            ]
+        )
+    )
+    return alpha2
+
+
+if __name__ == "__main__":
+    # Example usage
+    alpha1 = create_alpha1_example()
+    alpha2 = create_alpha2_example()
+    # The trees can now be evaluated with market data:
+    # result1 = alpha1.evaluate(market_data)
+    # result2 = alpha2.evaluate(market_data) 

@@ -1,0 +1,23 @@
+Alpha Expression,,,std(above_mean(+(returns,returns)))
+Tree Structure,,,
+,,,└── Op: std
+,,,    └── └── Subset: above_mean
+,,,    └──     └── └── Op: +
+,,,    └──     └──     ├── └── Data: returns
+,,,    └──     └──     └── └── Data: returns
+
+Alpha Metrics
+Metric,Training,Validation
+mean_ic,0.08369466294878063,0.1084586015174602
+information_ratio,0.22144039004352825,0.2829389510598519
+ic_std,0.37795572403177613,0.3833286336546758
+percent_positive_ic,59.64125560538116,59.93150684931506
+
+Strategy Metrics
+Metric,Training,Validation
+mean_return,3.219760016135497,3.9698510004053693
+volatility,0.32920577762593595,0.38896923964664554
+sharpe_ratio,9.780387329027949,10.206079545034802
+max_drawdown,-0.04968428937728242,-0.058638267524647514
+hit_ratio,74.22222222222223,72.33333333333334
+turnover,290.89293058779907,291.34484820946864

@@ -1,0 +1,23 @@
+Alpha Expression,,,std(top_n(/(returns,low)))
+Tree Structure,,,
+,,,└── Op: std
+,,,    └── └── Subset: top_n
+,,,    └──     └── └── Op: /
+,,,    └──     └──     ├── └── Data: returns
+,,,    └──     └──     └── └── Data: low
+
+Alpha Metrics
+Metric,Training,Validation
+mean_ic,0.06246742853607559,0.10361843494345561
+information_ratio,0.1797278276295714,0.28376044697705666
+ic_std,0.3475668145548628,0.3651616567683009
+percent_positive_ic,55.82959641255605,58.56164383561644
+
+Strategy Metrics
+Metric,Training,Validation
+mean_return,2.4926178495170945,3.70712086478816
+volatility,0.3341378420493106,0.3562822809166222
+sharpe_ratio,7.4598490079110675,10.405010474421283
+max_drawdown,-0.09544468239516457,-0.07019876049415963
+hit_ratio,66.88888888888889,74.0
+turnover,260.8202254126359,257.21120461084837
